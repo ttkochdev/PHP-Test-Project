@@ -17,4 +17,25 @@ try {
   echo "<br>" . $e->getMessage();
 }
 
+function fetchALLResults($conn){
+    //create array of mysql data
+    $sql = $conn->prepare("SELECT * FROM sweetwater_test");
+    $sql->execute();
+
+    /* Fetch all of the remaining rows in the result set */
+    $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+return $result;
+}
+function countALLResults($conn){
+    //create array of mysql data
+    $sql = $conn->prepare("SELECT * FROM sweetwater_test");
+    $sql->execute();
+
+    /* Fetch all of the remaining rows in the result set */
+    $result = $sql->rowCount();
+return $result;
+}
+
+
+
 ?>
