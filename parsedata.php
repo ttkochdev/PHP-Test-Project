@@ -16,4 +16,16 @@ function parseCandy($result){
     return $candy;
 }
 //parseCandy($result);
+
+function parseCallMe($result){
+    foreach($result as $value ){
+        //has call me 
+        if(strpos(strtolower($value['comments']), 'call me')){ //just in case upper case is an issue
+            $callme[] = $value;
+        }
+    }
+    unset($value);
+    //return callme comments array
+    return $callme;
+}
 ?>
