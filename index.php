@@ -1,6 +1,8 @@
 <?php
-require "db.php";
-    
+require_once "db.php";
+include "parsedata.php";
+
+
 
 $sql = $conn->prepare("SELECT * FROM sweetwater_test");
 $sql->execute();
