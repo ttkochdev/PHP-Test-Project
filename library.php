@@ -28,4 +28,10 @@ function printTable($data){
     }
 }
 
+function stringToDatetime($string){
+    $date = DateTime::createFromFormat('m/d/y H:i:s', $string.' 00:00:00');
+    $mysql_date_string = $date->format('Y-m-d H:i:s');
+    return $mysql_date_string;
+}
+
 ?>

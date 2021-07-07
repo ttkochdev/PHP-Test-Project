@@ -3,6 +3,9 @@ require_once "db.php";
 include "parsedata.php";
 include "library.php";
 
+//$orderidDateArray = cleanUpDatetimeData($dbresults);
+//insertDatetime($conn, $orderidDateArray);
+
 $dbresults = fetchALLResults($conn);
 $candy = parseCandy($dbresults);
 $callme = parseCallMe($dbresults);
@@ -10,10 +13,13 @@ $refer = parseRefer($dbresults);
 $signature = parseSignature($dbresults);
 $misc = parseMisc($dbresults);
 
+
 /* echo "<h1>All Comments</h1>";
 echo "<div>";
 printTable($dbresults);
 echo "</div>"; */
+//$da=stringToDatetime("01/05/18");
+//echo $da;
 ?>
 <h1>Comments about candy</h1>
 <div>
@@ -47,5 +53,6 @@ printTable($signature);
 <div>
 <?php
 printTable($misc);
+
 ?>
 </div>

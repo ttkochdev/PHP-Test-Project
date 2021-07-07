@@ -36,6 +36,24 @@ function countALLResults($conn){
 return $result;
 }
 
+function insertDatetime($conn, $orderidDateArray){
+    $sql = $conn->prepare("
+            UPDATE sweetwater_test 
+            SET shipdate_expected = :shipdate_expected
+            WHERE orderid = :orderid
+    ");
+    foreach($orderidDateArray as $key => $value){
+        //echo "Value0=" . $value['orderid'] . ", Value1=" . $value['shipdate_expected'];
+        //echo "<br>";
+        
+        $sql->execute([
+            ":shipdate_expected" => $value['shipdate_expected'],
+            ":orderid" => $value['orderid']
+        ]);
+        //print_r($sql);
+    }
+    //$sql = $conn->prepare("UPDATE sweetwater_test SET shipdate_expected=");
+}
 
 
 ?>
