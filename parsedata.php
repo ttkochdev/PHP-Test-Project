@@ -40,4 +40,16 @@ function parseRefer($result){
     //return callme comments array
     return $refer;
 }
+
+function parseSignature($result){
+    foreach($result as $value ){
+        //has Signature
+        if(strpos(strtolower($value['comments']), 'signature')){ //just in case upper case is an issue
+            $signature[] = $value;
+        }
+    }
+    unset($value);
+    //return callme comments array
+    return $signature;
+}
 ?>
