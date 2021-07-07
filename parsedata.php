@@ -28,4 +28,16 @@ function parseCallMe($result){
     //return callme comments array
     return $callme;
 }
+
+function parseRefer($result){
+    foreach($result as $value ){
+        //has refer
+        if(strpos(strtolower($value['comments']), 'refer')){ //just in case upper case is an issue
+            $refer[] = $value;
+        }
+    }
+    unset($value);
+    //return callme comments array
+    return $refer;
+}
 ?>
