@@ -4,10 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL); 
 
 
-function parseCandy($result){
+function parseCandy($result){ //need better candy algorithm!!!
     foreach($result as $value ){
         //has candy 
-        if(strpos($value['comments'], 'candy')){
+        if(strpos(strtolower($value['comments']), 'candy')){
             $candy[] = $value;
         }
     }
@@ -41,7 +41,7 @@ function parseRefer($result){
     return $refer;
 }
 
-function parseSignature($result){
+function parseSignature($result){ //for some reason?? 30830492 	signature is NOT required Expected Ship Date: 01/04/18 
     foreach($result as $value ){
         //has Signature
         if(strpos(strtolower($value['comments']), 'signature')){ //just in case upper case is an issue
@@ -49,7 +49,22 @@ function parseSignature($result){
         }
     }
     unset($value);
-    //return callme comments array
+    //return sig comments array
     return $signature;
+}
+
+function parseMisc($result){ 
+    foreach($result as $value ){
+        if( !strpos(strtolower($value['comments']), 'candy') &&
+            !strpos(strtolower($value['comments']), 'call me') &&
+            !strpos(strtolower($value['comments']), 'refer') &&
+            !strpos(strtolower($value['comments']), 'signature')
+        ){ //just in case upper case is an issue
+            $misc[] = $value;
+        }
+    }
+    unset($value);
+    //return sig comments array
+    return $misc;
 }
 ?>

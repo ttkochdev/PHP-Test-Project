@@ -8,12 +8,12 @@ $candy = parseCandy($dbresults);
 $callme = parseCallMe($dbresults);
 $refer = parseRefer($dbresults);
 $signature = parseSignature($dbresults);
+$misc = parseMisc($dbresults);
 
-
-echo "<h1>All Comments</h1>";
+/* echo "<h1>All Comments</h1>";
 echo "<div>";
 printTable($dbresults);
-echo "</div>";
+echo "</div>"; */
 ?>
 <h1>Comments about candy</h1>
 <div>
@@ -40,5 +40,12 @@ printTable($refer);
 <div>
 <?php
 printTable($signature);
+?>
+</div>
+
+<h1>Miscellaneous comments (everything else)</h1>
+<div>
+<?php
+printTable($misc);
 ?>
 </div>
