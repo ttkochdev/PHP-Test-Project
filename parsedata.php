@@ -43,7 +43,7 @@ function parseRefer($result){
 
 function parseSignature($result){ //for some reason?? 30830492 	signature is NOT required Expected Ship Date: 01/04/18 
     foreach($result as $value ){
-        //has Signature
+        //using code from php docs since having issues with this. unfortunately this is where I spend most of my time. 
         $mystring = strtolower($value['comments']);
         $findme   = 'signature';
         $pos = strpos($mystring, $findme);
@@ -72,10 +72,10 @@ function parseMisc($result){
         }
     }
     unset($value);
-    //return sig comments array
     return $misc;
 }
 
+//preps comment dates and stores in array for database updates. 
 function cleanUpDatetimeData($result){ 
     foreach($result as $value ){
 
@@ -87,9 +87,10 @@ function cleanUpDatetimeData($result){
             $dateval[] = array('orderid'=>$value['orderid'], 'shipdate_expected'=>stringToDatetime($substr));            
         }
     }
+    unset($string);
+    unset($find);
+    unset($pos);
     unset($value);
-    //echo "<pre>";
-    //print_r($dateval);
     return $dateval;
 }
 ?>

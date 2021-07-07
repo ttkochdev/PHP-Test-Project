@@ -41,14 +41,14 @@ function insertDatetime($conn, $orderidDateArray){
             UPDATE sweetwater_test 
             SET shipdate_expected = :shipdate_expected
             WHERE orderid = :orderid
+            AND shipdate_expected <> :shipdate_expected
     ");
     foreach($orderidDateArray as $key => $value){
-        //echo "Value0=" . $value['orderid'] . ", Value1=" . $value['shipdate_expected'];
-        //echo "<br>";
         
         $sql->execute([
             ":shipdate_expected" => $value['shipdate_expected'],
-            ":orderid" => $value['orderid']
+            ":orderid" => $value['orderid'],
+            ":shipdate_expected" => $value['shipdate_expected']
         ]);
         //print_r($sql);
     }

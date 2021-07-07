@@ -3,17 +3,24 @@ require_once "db.php";
 include "parsedata.php";
 include "library.php";
 
-//$orderidDateArray = cleanUpDatetimeData($dbresults);
-//insertDatetime($conn, $orderidDateArray);
-
+//run to get initial database results to prep for date updates.
 $dbresults = fetchALLResults($conn);
+
+//update shipdates based on comments
+$orderidDateArray = cleanUpDatetimeData($dbresults);
+insertDatetime($conn, $orderidDateArray);
+
+//run database fetch again to get fresh data to display.
+$dbresults = fetchALLResults($conn);
+
+//parse all of the commented and sort to be displayed
 $candy = parseCandy($dbresults);
 $callme = parseCallMe($dbresults);
 $refer = parseRefer($dbresults);
 $signature = parseSignature($dbresults);
 $misc = parseMisc($dbresults);
 
-
+//display everything if you want! (not on the list of requirements)
 /* echo "<h1>All Comments</h1>";
 echo "<div>";
 printTable($dbresults);

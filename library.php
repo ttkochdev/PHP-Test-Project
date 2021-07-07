@@ -28,6 +28,7 @@ function printTable($data){
     }
 }
 
+//converts dates in comments to mysql formatted date
 function stringToDatetime($string){
     $date = DateTime::createFromFormat('m/d/y H:i:s', $string.' 00:00:00');
     $mysql_date_string = $date->format('Y-m-d H:i:s');
